@@ -1,0 +1,9 @@
+C:\Users\Christian Cagide\Desktop\Software\4 Semestre\Estrucura de Datos\FIFO\FIFO\bin\Debug\FIFO.exe.config
+C:\Users\Christian Cagide\Desktop\Software\4 Semestre\Estrucura de Datos\FIFO\FIFO\bin\Debug\FIFO.exe
+C:\Users\Christian Cagide\Desktop\Software\4 Semestre\Estrucura de Datos\FIFO\FIFO\bin\Debug\FIFO.pdb
+C:\Users\Christian Cagide\Desktop\Software\4 Semestre\Estrucura de Datos\FIFO\FIFO\obj\Debug\FIFO.csprojResolveAssemblyReference.cache
+C:\Users\Christian Cagide\Desktop\Software\4 Semestre\Estrucura de Datos\FIFO\FIFO\obj\Debug\FIFO.Form1.resources
+C:\Users\Christian Cagide\Desktop\Software\4 Semestre\Estrucura de Datos\FIFO\FIFO\obj\Debug\FIFO.Properties.Resources.resources
+C:\Users\Christian Cagide\Desktop\Software\4 Semestre\Estrucura de Datos\FIFO\FIFO\obj\Debug\FIFO.csproj.GenerateResource.Cache
+C:\Users\Christian Cagide\Desktop\Software\4 Semestre\Estrucura de Datos\FIFO\FIFO\obj\Debug\FIFO.exe
+C:\Users\Christian Cagide\Desktop\Software\4 Semestre\Estrucura de Datos\FIFO\FIFO\obj\Debug\FIFO.pdb
