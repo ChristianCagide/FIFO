@@ -14,7 +14,7 @@ namespace FIFO
 
         public Proceso()
         {
-            ciclos = rand.Next(1, 15);
+            ciclos = rand.Next(4, 15);
             siguiente = null;
         }
 
