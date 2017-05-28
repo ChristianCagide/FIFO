@@ -12,34 +12,54 @@ namespace FIFO
 {
     public partial class Form1 : Form
     {
+        Random rand = new Random();
         Proceso proceso;
-        Procesador procesador;
+        FIFO miFIFO;
+        int ciclosVacio = 0;
+        int procesosPendientes = 0;
+        int ciclosPendientes = 0;
 
         public Form1()
         {
             InitializeComponent();
-            procesador = new Procesador();
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            proceso = new Proceso();
-            procesador.agregar(proceso);
-        }
-
-        private void btnMostrar_Click(object sender, EventArgs e)
-        {
-            txtMostrar.Text = procesador.mostrar();
+            miFIFO = new FIFO();
         }
 
         private void btnProcesar_Click(object sender, EventArgs e)
         {
-            procesador.procesar();
+            simular(Convert.ToInt32(txtCiclos.Text));
+            pendientes();
+            txtMostrar.Text = ciclosVacio.ToString() + " Ciclos vacio, " + procesosPendientes.ToString() + " Procesos pendientes, " + ciclosPendientes.ToString() + " ciclos pendientes";
+        }
+        
+        public void pendientes()
+        {
+            while (miFIFO.peek() != null)
+            {
+                procesosPendientes++;
+                ciclosPendientes += miFIFO.dequeue().ciclos;
+            }
         }
 
-        private void btnReporte_Click(object sender, EventArgs e)
+        public void simular(int ciclos)
         {
-            txtMostrar.Text = procesador.ToString();
-        }
+            for (int i = 0; i < ciclos; i++)
+            {
+                if (rand.Next(4) == 3)
+                {
+                    proceso = new Proceso(rand.Next(4, 15));
+                    miFIFO.enqueue(proceso);
+                }
+                if (miFIFO.peek() != null)
+                {
+                    miFIFO.peek().ciclos--;
+                    if (miFIFO.peek().ciclos == 0)
+                    {
+                        miFIFO.dequeue();
+                    }
+                }
+                else
+                    ciclosVacio++;
+            }
     }
 }
