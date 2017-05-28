@@ -6,30 +6,20 @@ using System.Threading.Tasks;
 
 namespace FIFO
 {
-    class Procesador
+    class FIFO
     {
         private Proceso inicio { get; set; }
-        private static Random rand;
-        private int ciclosVacio { get; set; }
-        private int procesosPendientes { get; set; }
-        private int ciclosPendientes { get; set; }
 
-        public Procesador()
+        public FIFO()
         {
             inicio = null;
-            rand = new Random();
-            ciclosVacio = 0;
-            ciclosPendientes = 0;
-            procesosPendientes = 0;
         }
 
-        public void agregar(Proceso nuevo)
+        public void enqueue(Proceso nuevo)
         {
             if (inicio == null)
             {
                 inicio = nuevo;
-                procesosPendientes++;
-                ciclosPendientes += nuevo.ciclos;
             }
             else
                 agregar(inicio, nuevo);
@@ -40,63 +30,26 @@ namespace FIFO
             if (ultimo.siguiente == null)
             {
                 ultimo.siguiente = nuevo;
-                procesosPendientes++;
-                ciclosPendientes += nuevo.ciclos;
             }
             else
                 agregar(ultimo.siguiente, nuevo);
         }
-
-        public void procesar()
+        
+        public Proceso dequeue()
         {
-            bool enEjec = false;
-            for(int i = 0; i < 200; i++)
-            {
-                if (enEjec == false)
-                    if(inicio!=null)
-                        if (rand.Next(1, 5) == 1)
-                        {
-                            enEjec = true;
-                            procesosPendientes--;
-                            ciclosPendientes -= inicio.ciclos;
-                        }
-
-
-                if (enEjec == true)
-                {
-                    inicio.ciclos--;
-                    if (inicio.ciclos == 0)
-                    {
-                        inicio = inicio.siguiente;
-                        enEjec = false;
-                    }
-                }
-                else
-                    ciclosVacio++;
-            }
+            Proceso temp = inicio;
+            inicio = inicio.siguiente;
+            return temp;
         }
 
-        public string mostrar()
+        public Proceso peek()
         {
-            if(inicio==null)
-                return "Vacio";
-            else
-            {
-                Proceso temp = inicio;
-                string mostrar = "";
-                while (temp != null)
-                {
-                    mostrar += temp.ToString() + Environment.NewLine + Environment.NewLine;
-                    temp = temp.siguiente;
-                }
-                return mostrar;
-            }
-
+            return inicio;
         }
 
         public override string ToString()
         {
-            return procesosPendientes.ToString() + " " + ciclosPendientes.ToString() + " " + ciclosVacio.ToString();
+            return inicio.ToString();
         }
     }
 }
