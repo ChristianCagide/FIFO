@@ -8,13 +8,12 @@ namespace FIFO
 {
     class Proceso
     {
-        private static Random rand = new Random();
         public int ciclos { get; set; }
         public Proceso siguiente { get; set; }
 
-        public Proceso()
+        public Proceso(int rand)
         {
-            ciclos = rand.Next(4, 15);
+            ciclos = rand;
             siguiente = null;
         }
 
